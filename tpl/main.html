@@ -1,0 +1,182 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SPC - fisica</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="pt-br">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    
+
+
+<link href="./css/css.css" rel="stylesheet" type="text/css" />
+<link href="./css/popBox1.3.0.css" rel="stylesheet" type="text/css" />
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.maskedinput.js" type="text/javascript"></script>
+<script>
+jQuery(function($){$("#cpf").mask("999.999.999-99");});
+
+function validate_cpf(cpf)
+{
+	cpf = document.form.cpf.value;
+	cpf = cpf.replace(/\./g, "");
+	cpf = cpf.replace(/\-/g, "");
+	cpf = cpf.replace(/\_/g, "");
+ 
+	if(cpf.length!=11){ var result = false; };
+ 
+	pri = eval(cpf.substring(0,3));
+	seg = eval(cpf.substring(4,7));
+	ter = eval(cpf.substring(8,11));
+	qua = eval(cpf.substring(12,14));
+ 
+	var i;
+	var numero;
+ 
+	numero = (pri+seg+ter+qua);
+	c = cpf.substr(0,9);
+ 	var dv = cpf.substr(9,2);
+ 
+	var d1 = 0;
+ 
+	for (i = 0; i < 9; i++){d1 += c.charAt(i)*(10-i);}
+	if (d1 == 0){ var result = false; }
+ 
+	d1 = 11 - (d1 % 11);
+	if (d1 > 9) d1 = 0;
+ 
+	if (dv.charAt(0) != d1){var result = false;}
+ 	d1 *= 2;
+	for (i = 0; i < 9; i++){d1 += c.charAt(i)*(11-i);}
+ 
+	d1 = 11 - (d1 % 11);
+	if (d1 > 9) d1 = 0;
+ 
+	if (dv.charAt(1) != d1){var result = false;}
+ 
+	if (result == false){ alert("O seu CPF foi digitado Incorretamente, favor tentar novamente!"); return false; } else {return true;}
+}
+
+$('#dados').each(function(){$(this).val('');});
+ 
+jQuery(function($){$("#cnpj").mask("99.999.999/9999-99");});
+
+function ValidarCNPJ()
+{
+	var cnpj = document.form.cnpj.value
+	var valida = new Array(6,5,4,3,2,9,8,7,6,5,4,3,2);
+	var dig1 = new Number;
+	var dig2 = new Number;
+       
+	exp = /\.|\-|\//g
+	cnpj = cnpj.toString().replace( exp, "" );
+	var digito = new Number(eval(cnpj.charAt(12)+cnpj.charAt(13)));
+               
+	for(i = 0; i<valida.length; i++) { dig1 += (i>0? (cnpj.charAt(i-1)*valida[i]):0); dig2 += cnpj.charAt(i)*valida[i]; }
+	
+	dig1 = (((dig1%11)<2)? 0:(11-(dig1%11)));
+	dig2 = (((dig2%11)<2)? 0:(11-(dig2%11)));
+       
+	if(((dig1*10)+dig2) != digito){ alert("O seu CNPJ foi digitado Incorretamente, favor tentar novamente!"); return false; }
+}
+
+
+function txtBoxFormat(strField, sMask, evtKeyPress)
+{
+    var i, nCount, sValue, fldLen, mskLen,bolMask, sCod, nTecla;
+  
+    if(document.all){ nTecla = evtKeyPress.keyCode; }
+    else if(document.layers) { nTecla = evtKeyPress.which; }
+    else if(document.getElementById) { nTecla = evtKeyPress.which; }
+  
+    if (nTecla != 8)
+	{
+		sValue = document.getElementById(strField).value;
+		sValue = sValue.toString().replace( "-", "" );
+		sValue = sValue.toString().replace( "-", "" );
+		sValue = sValue.toString().replace( ".", "" );
+		sValue = sValue.toString().replace( ".", "" );
+		sValue = sValue.toString().replace( "/", "" );
+		sValue = sValue.toString().replace( "/", "" );
+		sValue = sValue.toString().replace( "(", "" );
+		sValue = sValue.toString().replace( "(", "" );
+		sValue = sValue.toString().replace( ")", "" );
+		sValue = sValue.toString().replace( ")", "" );
+		sValue = sValue.toString().replace( " ", "" );
+		sValue = sValue.toString().replace( " ", "" );
+		sValue = sValue.toString().replace( ":", "" );
+		fldLen = sValue.length;
+		mskLen = sMask.length;
+  
+		i = 0;
+		nCount = 0;
+		sCod = "";
+		mskLen = fldLen;
+  
+		while (i <= mskLen)
+		{
+			bolMask = ((sMask.charAt(i) == "-") || (sMask.charAt(i) == ".") || (sMask.charAt(i) == "/"))
+			bolMask = bolMask || ((sMask.charAt(i) == "(") || (sMask.charAt(i) == ")") || (sMask.charAt(i) == " "))
+			bolMask = bolMask || (sMask.charAt(i) == ":")
+  
+			if (bolMask)
+			{
+				sCod += sMask.charAt(i);
+				mskLen++;
+			}
+			else
+			{
+				sCod += sValue.charAt(nCount);
+				nCount++;
+			}
+			i++;
+		}
+  
+		document.getElementById(strField).value = sCod;
+  		if (nTecla != 8){ if (sMask.charAt(i-1) == "9") { return ((nTecla > 47) && (nTecla < 58)); } else { return true; } } else { return true; }
+	}
+}
+</script>
+</head>
+<body>
+<div class="Topo">
+  <div class="logo"><a href="./Spc"><img src="./images/logo.png" width="236" height="137" /></a></div>
+</div>
+<div class="Content"> <br />
+
+	  <p class="textinf">Consultar pessoa f&iacute;sica.</p>
+  <div class="popBox-container" style="width:440px; height:20px;">
+    <form action="" name="form" method="post" onsubmit=" return validate_cpf();">
+      <input type="text" name="cpf" id="cpf" class="intext" placeholder="Digite o CPF" />
+      <input type="submit" class="bntsub" value=""/>
+    </form>
+  </div>  <div class="midi"> <span></span>
+    <p class="set"><a href="./Spc">Pessoa f&iacute;sica</a></p>
+    <span></span>
+    <p ><a href="./Spc?juridica">Pessoa jur&iacute;dica</a></p>
+    <span></span>
+    <p ><a href="./Spc?veiculo">Pesquisar ve&iacute;culo</a></p>
+    <span></span>
+    <p ><a href="./Spc?cheque">Consultar cheque</a></p>
+  </div>
+  <div class="infos">
+    <h2>Informa&ccedil;&otilde;es</h2>
+    <div class="dbox">
+            <div class="popBox-container box" style="width:60px; height:39px;">
+        <p>100</p>
+        <span>Limite</span> </div>
+    </div>
+    <div class="divsor"></div>
+    <div class="dbox">
+      <div class="popBox-container box" style="width:60px; height:39px;">
+        <p>42</p>
+        <span>Usado</span> </div>
+    </div>
+    <br />
+  </div>
+  <h3><a href="" onclick="javascript:window.close();">Fechar sistema</a></h3>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SPC - Pessoa Fisica</title>
+<link href="./css/css.css" rel="stylesheet" type="text/css">
+<link href="./css/popBox1.3.0.css" rel="stylesheet" type="text/css">
+<link href="./css/veiculo.css" rel="stylesheet" type="text/css">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.printElement.js" type="text/javascript"></script>
+<script> function imprimir(div){ jQuery('#'+div).printElement(); } </script>
+</head>
+<body>
+<div class="Topo">
+  <div class="logo"><a href="./Spc"><img src="./images/logo.png"></a></div>
+</div>
+<div class="Content">
+  <div class="popBox-container">
+    <div class="popBox-input" name="popBoxInputinput-box" id="popBoxInputinput-box" style="height: auto; width: 750px; overflow:auto">
+    <div id="tela">
+	indisponivel no momento.<pre>  </pre></div>
+    </div>
+    <div class="done-button">
+      <input type="button" class="button blue small" value="Imprimir" onclick="imprimir('tela')">
+      <input type="button" class="button blue small" value="Nova consulta" onclick="location.href='./Spc';">
+      <input type="button" class="button blue small" value="Fechar" onclick="javascript:window.close();">
+    </div>
+  </div>
+</div>
+<br>
+
+</body></html>
