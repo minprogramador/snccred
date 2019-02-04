@@ -109,13 +109,86 @@ function loadcaptcha() {
 
 }
 
+function login(token) {
+
+    var usuario      = $("#usuario").val();
+    var senha            = $("#senha").val();
+
+    var payload = {
+        usuario: usuario,
+        senha: senha,
+        token: token
+    }
+  
+    
+    $.ajax({
+        method : "POST",
+        url : "./auth",
+        data : payload,
+        timeout: 8000,
+    })
+    .done(function(res) {
+
+        if (res.error == true) {
+            
+            if (res.msg) {
+                var msg = res.msg;
+            } else {
+                var msg = 'Usuario ou senha invalidos';
+            }
+
+        
+            $('#alertt').show();
+            $('#alertt').addClass('alert-danger');
+            $('#message-alert').html('<strong>Ops!</strong> ' + msg);           
+        
+        } else {
+
+            if (res.token) {
+                console.log('usuario ok, redirecionar para painel.');
+                $('#alertt').removeClass("alert-danger");
+                $('#alertt').show();
+                $('#alertt').addClass('alert alert-success');
+                $('#message-alert').html('Aguarde, redirecionando...');
+                document.cookie = 'token=' + res.token;
+                document.location = './Painel';
+            } else {
+   
+                if (res.msg) {
+                    var msg = res.msg;
+                } else {
+                    var msg = 'Usuario ou senha invalidos';
+                }
+
+            
+                $('#alertt').show();
+                $('#alertt').addClass('alert-danger');
+                $('#message-alert').html('<strong>Ops!</strong> ' + msg);           
+
+            }
+        }
+
+    })
+    .fail(function() {
+
+        $('#alertt').show();
+        $('#alertt').addClass('alert-warning');
+        $('#message-alert').html('<strong>Ops!</strong> Sistema indisponivel, tente novamente em breve.');    
+        console.log('error ao buscar dados, demorou mais de 8s.....');
+
+    });
+  
+
+}
+
+
 function main() {
     setTimeout(function() {
         $.get('js/tpls/login.html', function(template) {
 
             var rendered = Mustache.render(template);
             $('#app').html(rendered);
-            
+			loadcaptcha();
         });
     }, 1);
 }
@@ -141,13 +214,13 @@ function processHash(hash) {
         case "":
             alert('index');
             break;
-        case "#Login":
+        case "#Logue-se":
             main();
             break;
-        case "#EsqueceuSenha":
+        case "#RecPass":
             loadEsqueceuSenha();
             break;
-        case "#FaleConosco":
+        case "#Contato":
             loadFaleConosco();
             break;
         default:
