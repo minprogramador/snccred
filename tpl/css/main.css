@@ -150,9 +150,33 @@ h4 {
 	padding-top: 3%;
 }
 
+.btn-dark{
+  background-color:#2c2d30;
+  color:white;
+}
+.btn-dark:hover{
+  color:#cecece;
+}
+
+.btn-dark:focus {
+  color:#cecece;
+}
+
+
+.cont {
+	overflow: hidden;
+	margin-left: 46%;
+	width: 40%;
+	position: fixed;
+	z-index: 9999;
+	bottom: 3%;
+}
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) { 
 
+	.cont {
+			margin-left: 31% !important;
+	}
 	.btn {
 		margin-left: 13%;
 	}

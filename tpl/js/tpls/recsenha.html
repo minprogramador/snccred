@@ -1,3 +1,7 @@
+
+<div class="container">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="margin-top: 3%;">
+
 <div class="form-group">
 					<h4 class="text-justify">
 						Recuperar senha
@@ -16,14 +20,6 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="glyphicon glyphicon-share"></i>        
-							</span>
-							<input type="text" class="form-control input" placeholder="Digite seu revendedor" name="recRevendedor" id="recRevendedor" required>
-						</div>
-					</div>
           
           <div class="form-group">
             <div class="alert fade in" id="alertt">
@@ -34,12 +30,18 @@
             </div>
           </div>
           
-          <div class="form-group bntesq">
-						<a href="#Login" onclick="loadmain()" class="btn btn-link" id="voltarpg">Voltar</a>            
-					</div>
+            <div class="form-group bntesq">
+                <a class="btn btn-link" id="esqceusenha" href="#Logue-se">
+                    Voltar
+                </a>
+            </div>
+            <div class="form-group bntok">
+                <div id='recaptcha1' ></div>    						
+                <button id="submit" type="submit" class="btn btn-dark">
+                    Recuperar
+                </button>
+            </div>
 
-					<div class="form-group bntok">  
-					 <div id='recaptchaRecSenha'></div>  
-				<button id="submit" name="submit" type="submit" class="btn btn-primary">Recuperar senha</button>
-					</div>
-</form>
+		</form>
+    </div>
+</div>

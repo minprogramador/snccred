@@ -249,6 +249,19 @@ function notfound() {
     }, 188);
 }
 
+function loadEsqueceuSenha() {
+    loading();
+    setTimeout(function() {
+
+        $.get('js/tpls/recsenha.html', function(template) {
+            var rendered = Mustache.render(template);
+            $('.container').html(rendered);
+            loadcaptcha();
+        });
+
+    }, 100);	
+}
+
 
 function main() {
 	loading();
@@ -260,6 +273,18 @@ function main() {
 			loadcaptcha();
         });
     }, 1);
+}
+
+function loadFaleConosco() {
+    loading();
+    setTimeout(function() {
+
+    	$.get('js/tpls/contato.html', function(template) {
+    		var rendered = Mustache.render(template);
+    		$('.container').html(rendered);
+    		loadcaptcha();
+    	});
+    }, 100);   
 }
 
 
@@ -286,7 +311,7 @@ function processHash(hash) {
         case "#Logue-se":
             main();
             break;
-        case "#RecPass":
+        case "#EsqueceuSenha":
             loadEsqueceuSenha();
             break;
         case "#Contato":
