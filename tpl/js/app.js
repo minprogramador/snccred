@@ -265,6 +265,7 @@ function loadEsqueceuSenha() {
 
 function main() {
 	loading();
+	$('.cont').show();
     setTimeout(function() {
         $.get('js/tpls/login.html', function(template) {
 
@@ -282,6 +283,7 @@ function loadFaleConosco() {
     	$.get('js/tpls/contato.html', function(template) {
     		var rendered = Mustache.render(template);
     		$('.container').html(rendered);
+    		$('.cont').hide();
     		loadcaptcha();
     	});
     }, 100);   

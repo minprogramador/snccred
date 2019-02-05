@@ -50,18 +50,22 @@ h4 {
 	}
 
 .top{
-	width: 236px;
-	height: 137px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
 	margin-top: -10px;
 	display: block;
 	z-index: 999;
 	padding: 0;
 	top: 0;
-	position: relative;
+	position: fixed;
 }
+.top img {
+	width: 236px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 137px;
+	z-index: 9999;
 
+}
  .loader {
   border: 5px solid #f3f3f3; /* Light grey */
   border-top: 5px solid #1B4A5C; /* Blue */
@@ -71,6 +75,10 @@ h4 {
   animation: spin 2s linear infinite;
   float: left;
   margin-left: 8%;
+}
+
+.container{
+	margin-top: 15%;
 }
 
 .lc {
@@ -89,13 +97,17 @@ h4 {
 	}
 
 	h4 hr {
-		border-top: 1px solid #023d68;
-	  margin-bottom: 0;
-	  margin-top: 8px;
-	}
+    border-top: 6px solid #023D62;
+    margin-bottom: 0;
+    margin-top: 11px;
+    	}
 
 	.bntesq {
 	  float: left;
+	}
+	.bntesq a{
+			  padding-left: 0;
+
 	}
 
 	#alertt {
@@ -151,7 +163,7 @@ h4 {
 }
 
 .btn-dark{
-  background-color:#2c2d30;
+  background-color:#023D62;
   color:white;
 }
 .btn-dark:hover{
@@ -175,10 +187,10 @@ h4 {
 @media (max-width: 575.98px) { 
 
 	.cont {
-			margin-left: 33.3% !important;
+			margin-left: 38% !important;
 	}
-	.btn {
-		margin-left: 13%;
+	.container{
+		margin-top: 40%;
 	}
 
 }
@@ -191,16 +203,22 @@ h4 {
 }
 
  /*Medium devices (tablets, less than 992px)*/
-@media (max-width: 991.98px) { 
+@media (min-width: 991.98px) { 
 
+	.container{
+		margin-top: 12%;
+	}
 
 
 }
 
  /*Large devices (desktops, less than 1200px)*/
-@media (max-width: 1199.98px) { 
+@media (min-width: 1199.98px) { 
 
 
 
+	.container{
+		margin-top: 10%;
+	}
 }
 
