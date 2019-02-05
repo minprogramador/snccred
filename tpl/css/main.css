@@ -37,6 +37,7 @@ h4 {
 	background: linear-gradient(135deg, #fff 0%, #f3f6f8 100%);
 }
 
+
 .box-wrapper::before {
 	content: "";
 	position: fixed;
@@ -61,10 +62,27 @@ h4 {
 	position: relative;
 }
 
-.container {
+ .loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #1B4A5C; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  float: left;
+  margin-left: 8%;
+}
 
-}	
+.lc {
+	margin-top: 5%;
+	padding-left: 10px;
+	overflow: hidden;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 	.bntok {
 	  float: right;
@@ -135,10 +153,15 @@ h4 {
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) { 
 
+	.btn {
+		margin-left: 13%;
+	}
+
 }
 
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 767.98px) {
+
 
 
 }
@@ -147,8 +170,13 @@ h4 {
 @media (max-width: 991.98px) { 
 
 
+
 }
 
  /*Large devices (desktops, less than 1200px)*/
-@media (max-width: 1199.98px) { ... }
+@media (max-width: 1199.98px) { 
+
+
+
+}
 
